@@ -1,0 +1,31 @@
+# START MINIKUBE
+minikube start
+
+# CREATE NGINX DEPLOYMENT
+kubectl create deployment mynginx --image=nginx
+
+# VERIFY DEPLOYMENT
+kubectl get deployments
+kubectl get pods
+
+# EXPOSE DEPLOYMENT AS NODEPORT SERVICE
+kubectl expose deployment mynginx --type=NodePort --port=80
+
+# CHECK SERVICE AND SEE NODEPORT
+kubectl get svc
+
+# ACCESS APPLICATION IN BROWSER (AUTO OPENS)
+minikube service mynginx
+
+# SCALE NGINX DEPLOYMENT (increase containers)
+kubectl scale deployment mynginx --replicas=5
+
+# VERIFY SCALING
+kubectl get pods -o wide
+
+# OPTIONAL: OPEN KUBERNETES DASHBOARD
+minikube dashboard
+
+# DELETE ALL (if needed)
+kubectl delete deployment mynginx
+kubectl delete svc mynginx
