@@ -1,4 +1,70 @@
 for online recruitement system, write abstract, functional and non functional requirements draw class diagram
 create a freestyle pipeline using jenkins for web project with url
 https://github.com/anujyog1/carrepo
+
 create docker file for maven project with name carimage707 using DockerFile, build it, and push it to dockerhub
+
+
+
+5. Dockerfile for Maven Project:
+
+Here is a sample Dockerfile for your Maven project:
+
+# Use an official Maven image to build the project
+FROM maven:3.8.6-openjdk-11-slim as builder
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the pom.xml and the source code into the container
+COPY pom.xml .
+COPY src ./src
+
+# Build the application using Maven
+RUN mvn clean install -DskipTests
+
+# Create a smaller image for running the application
+FROM openjdk:11-jre-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the compiled JAR file from the builder image
+COPY --from=builder /app/target/*.jar app.jar
+
+# Expose the application port
+EXPOSE 8080
+
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+Steps to Build, Tag, and Push to DockerHub:
+
+Build the Docker Image:
+
+Navigate to the directory containing your Dockerfile.
+
+Run the following command to build the Docker image:
+
+docker build -t carimage707 .
+
+
+Tag the Image:
+
+Tag your image with your DockerHub username:
+
+docker tag carimage707 <your-dockerhub-username>/carimage707:latest
+
+
+Login to DockerHub:
+
+If not already logged in, run:
+
+docker login
+
+
+Push the Image to DockerHub:
+
+Push the image to DockerHub:
+
+docker push <your-dockerhub-username>/carimage707:
