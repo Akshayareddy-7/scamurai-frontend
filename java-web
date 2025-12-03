@@ -1,0 +1,100 @@
+Create & Configure Jenkins Freestyle Project – Build Java Web App with Maven
+Step-by-Step Practical Execution
+👉 Step 1 — Open Jenkins
+
+Open browser and type:
+
+http://localhost:8080
+
+👉 Step 2 — Login to Jenkins
+
+Enter your username & password.
+
+👉 Step 3 — Create a Freestyle Project
+
+On Dashboard → Click:
+
+New Item
+
+
+Enter project name:
+
+Maven-WebApp-Build
+
+
+Select:
+
+Freestyle project
+
+
+Click OK
+
+👉 Step 4 — Configure Source Code (GitHub)
+
+Scroll to Source Code Management
+
+Select:
+
+Git
+
+
+In Repository URL paste:
+
+https://github.com/<your-username>/<your-repo>.git
+
+
+(Use your actual repository here)
+
+Example:
+
+https://github.com/akshaya/webapp.git
+
+
+If private repo → Add credentials
+
+👉 Step 5 — Configure Maven Build Step
+
+Scroll to Build
+Click:
+
+Add Build Step → Invoke top-level Maven targets
+
+In Goals box type:
+clean install
+
+
+or if WAR file packaging:
+
+clean package
+
+👉 Step 6 — Archive Build Artifacts (Output File)
+
+Scroll to Post-build Actions
+Click:
+
+Add Post-Build Action → Archive the artifacts
+
+In files to archive type:
+target/*.war
+
+👉 Step 7 — Save and Build
+
+Click:
+
+Save
+
+
+Click:
+
+Build Now
+
+👉 Step 8 — Show the Build Process
+
+On left side:
+
+#1 (Latest Build)
+
+
+Then click:
+
+Console Output
