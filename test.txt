@@ -1,0 +1,4 @@
+for online recruitement system, write abstract, functional and non functional requirements draw class diagram
+create a freestyle pipeline using jenkins for web project with url
+https://github.com/anujyog1/carrepo
+create docker file for maven project with name carimage707 using DockerFile, build it, and push it to dockerhub
