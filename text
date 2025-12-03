@@ -159,6 +159,25 @@ java -jar target/app.jar
 Access
 http://<EC2-public-ip>:8080
 
+Steps for a project deployment 
+->Till above same steps then 
+open cmd and type the ssh given in aws 
+then 1) sudo apt update
+2) sudo apt-get install docker.io
+3)sudo apt install git
+4)sudo apt install nano
+-> Clone a git repo given in q paper 
+1) Go to the directory
+2) nano Dockerfile
+3) run some nginx 
+FROM nginx:alpine
+COPY . usr/share/nginx/html
+type the above and then ctrl+o
+-> Now make a docker image tht is go to the cmd and type
+1)sudo docker build -t mywebapp .
+2)sudo docker run -d -p 80:80 mywebapp
+-> go to instances in aws 
+copy the public ipv4 and run
 ☸️ 5. Kubernetes (Minikube) Scaling / Deployment
 Start Minikube
 minikube start
